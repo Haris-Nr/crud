@@ -75,5 +75,21 @@ router.delete("/delete/:id",async(req,res)=>{
 })
 
 
+router.get("/search/:key",async(req,res)=>{
+    try {
+        const data =await  Input.find({
+            "$or":[
+                {"name":{$regex:req.params.key}},
+                {"email":{$regex:req.params.key}},
+                {"password":{$regex:req.params.key}},
+            ]
+        })
+        res.send(data)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+
 
 module.exports = router;

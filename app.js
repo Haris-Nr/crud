@@ -1,5 +1,8 @@
 const fs = require('fs')
 const path = require('path')
+const os = require('os')
+
+console.log(os.cpus().length)
 /* The line `const dirPath = path.join(__dirname,"views")` is creating a variable `dirPath` that stores
 the path to a directory called "views". The `path.join()` function is used to join multiple path
 segments together, in this case, it joins the current directory (`__dirname`) with the "views"
@@ -15,4 +18,4 @@ const dirPath = path.join(__dirname,"views")
 
 
 
-console.log(fs.readdirSync(dirPath,{withFileTypes:true}))
+// console.log(fs.readdirSync(dirPath,{withFileTypes:true}))
