@@ -1,5 +1,8 @@
 const router = require("express").Router();
 const Input = require("../model/input")
+const multer = require('multer')
+
+
 
 // create function
 
@@ -90,6 +93,18 @@ router.get("/search/:key",async(req,res)=>{
     }
 })
 
+
+const upload = multer({
+    storage : multer.diskStorage({
+        destination:(req , file,cb)=> cb(null,"./upload/"),
+        filename :( req ,file,cb )=> cb( null,new Date().toISOString()+file.originalname),
+    }) ,
+}).single("images")
+
+
+router.post("/imageUpload",upload,async(req,res)=>{
+    res.send("upload")
+})
 
 
 module.exports = router;
